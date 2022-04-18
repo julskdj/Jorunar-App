@@ -1,6 +1,12 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 import { JournalApp } from "./JournalApp";
 import './styles/styles.scss';
 
-ReactDOM.createRoot(document.getElementById("root")).render(<JournalApp />);
+ReactDOM.render(
+    <>
+      <JournalApp />
+    </>,
+    document.getElementById("root")
+  );
+  

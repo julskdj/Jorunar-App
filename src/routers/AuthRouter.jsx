@@ -1,19 +1,18 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
-import { Route, Switch } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import LoginScreen from "../components/auth/LoginScreen";
 import RegisterScreen from "../components/auth/RegisterScreen";
 
 const AuthRouter = () => {
   return (
     <>
-      <Switch>
-        <Route  path="/auth/login" element={LoginScreen}  />
-        <Route  path="/auth/register" element={RegisterScreen}  />
-
-        <Redirect to="/auth/register" />
-      </Switch>
-    </> 
+      <Routes>
+        <Route path="/" element={<LoginScreen />} />
+        <Route path="/login" element={<LoginScreen />} />
+        <Route path="/register" element={<RegisterScreen />} />
+        <Route path="/*" element={<Navigate to={"/auth/login"} />} />
+      </Routes>
+    </>
   );
 };
 

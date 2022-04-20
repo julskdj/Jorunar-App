@@ -19,13 +19,13 @@ const uiReducer = (state = initialState, action ) => {
                 msgError: null
             }
 
-        case uiStarLoading: 
+        case types.uiStartLoading:
             return {
                 ...state,
                 loading: true
             }
 
-        case uiFinishLoading: 
+        case types.uiFinishLoading:
             return {
                 ...state,
                 loading: false

@@ -1,0 +1,26 @@
+.contener {
+    background-color: darken($color: $primary, $amount: 5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.contener .spinner{
+    border: 7px solid rgba(255, 255, 255, 0.6);
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border-left-color: transparent;
+
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

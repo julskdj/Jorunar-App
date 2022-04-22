@@ -9,6 +9,7 @@ import { login } from "../actions/auth";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import Loader from "../components/ui/Loader";
+import { startLoadingNotes } from "../actions/notes";
 
 const AppRouter = () => {
   const dispatch = useDispatch();
@@ -17,10 +18,12 @@ const AppRouter = () => {
   const [isLoggedIn, setisLoggedIn] = useState(false);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged(async (user) => {
       if (user?.uid) {
         dispatch(login(user.uid, user.displayName));
         setisLoggedIn(true);
+
+        dispatch(startLoadingNotes(user.uid));
       } else {
         setisLoggedIn(false);
       }
@@ -30,7 +33,7 @@ const AppRouter = () => {
   }, [dispatch, setCheking, setisLoggedIn]);
 
   if (Cheking) {
-    return <Loader/>;
+    return <Loader />;
   }
 
   return (

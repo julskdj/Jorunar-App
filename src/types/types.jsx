@@ -9,8 +9,17 @@ const types = {
   // Loading Reducer
 
   uiStartLoading: '[UI] Start loading',
-  uiFinishLoading: '[UI] Finish loading'
+  uiFinishLoading: '[UI] Finish loading',
   
+  // Notes Reducer
+
+  notesAddNew:  '[Notes] New Note',
+  notesActive:  '[Notes] Set Active Note',
+  notesLoad:    '[Notes] Load Notes',
+  notesUpdated: '[Notes] Update Notes',
+  notesFileUrl: '[Notes] Updated Image Url',
+  notesDelete:  '[Notes] Notes Delete',
+  notesLogoutCleaning: '[Notes] Logout Cleaning'
 
 };
 

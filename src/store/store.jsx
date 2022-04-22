@@ -2,11 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import thunk from "redux-thunk";
 import authReducer from "../reducers/authReducer";
+import notesReducer from "../reducers/notesReducer";
 import uiReducer from "../reducers/uiReducer";
 
 const reducers = combineReducers({
   auth: authReducer,
-  ui: uiReducer
+  ui: uiReducer,
+  notes: notesReducer
 });
 
 const store = configureStore({

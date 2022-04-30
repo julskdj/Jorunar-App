@@ -1,36 +1,44 @@
-import React from 'react'
+import moment from "moment";
+import { useDispatch } from "react-redux";
+import { activeNote } from "../../actions/notes";
 
- const JournalEntry = ({id, date, tittle, body, url}) => {
+const JournalEntry = ({ id, date, tittle, body, url }) => {
+  const dispatch = useDispatch();
+  const noteDate = moment(date);
 
-    console.log(id, date, tittle, body, url);
+  const handleInputClick = () => {
+    const note = {
+      id,
+      body,
+      date,
+      tittle,
+    };
+    dispatch(activeNote(id, note));
+  };
 
-    return (
-        <div className="journal__entry pointer">
-            
-            <div 
-                className="journal__entry-picture"
-                style={{
-                    backgroundSize: 'cover',
-                    backgroundImage: 'url(https://earthsky.org/upl/2018/12/comet-wirtanen-Jack-Fusco-dec-2018-Anza-Borrego-desert-CA-e1544613895713.jpg)'
-                }}
-            ></div>
+  return (
+    <div className="journal__entry pointer" onClick={handleInputClick}>
+      {url && (
+        <div
+          className="journal__entry-picture"
+          style={{
+            backgroundSize: "cover",
+            backgroundImage: `ùrl(${url})`,
+          }}
+        ></div>
+      )}
 
-            <div className="journal__entry-body">
-                <p className="journal__entry-title">
-                    {tittle}
-                </p>
-                <p className="journal__entry-content">
-                    {body}
-                </p>
-            </div>
+      <div className="journal__entry-body">
+        <p className="journal__entry-title">{tittle}</p>
+        <p className="journal__entry-content">{body}</p>
+      </div>
 
-            <div className="journal__entry-date-box">
-                <span>Monday</span>
-                <h4>28</h4>
-            </div>
+      <div className="journal__entry-date-box">
+        <span>{noteDate.format("dddd")}</span>
+        <h4>{noteDate.format("Do")}</h4>
+      </div>
+    </div>
+  );
+};
 
-        </div>
-    )
-}
-
-export default JournalEntry
+export default JournalEntry;

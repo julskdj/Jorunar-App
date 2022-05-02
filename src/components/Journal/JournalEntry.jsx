@@ -23,7 +23,7 @@ const JournalEntry = ({ id, date, tittle, body, url }) => {
           className="journal__entry-picture"
           style={{
             backgroundSize: "cover",
-            backgroundImage: `ùrl(${url})`,
+            backgroundImage: `url(${url})`,
           }}
         ></div>
       )}
